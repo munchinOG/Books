@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Munchin.BookStore.Data;
+using Munchin.BookStore.Repository;
 
 namespace Munchin.BookStore
 {
@@ -19,6 +20,8 @@ namespace Munchin.BookStore
             services.AddControllersWithViews();
 #if DEBUG
             services.AddRazorPages().AddRazorRuntimeCompilation();
+
+            services.AddScoped<BookRepositry, BookRepositry>();
 #endif
         }
 

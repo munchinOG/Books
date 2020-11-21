@@ -1,4 +1,6 @@
-﻿using Munchin.BookStore.Models;
+﻿using Munchin.BookStore.Data;
+using Munchin.BookStore.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -6,6 +8,29 @@ namespace Munchin.BookStore.Repository
 {
     public class BookRepositry
     {
+        private readonly BookStoreContext _context = null;
+
+        public BookRepositry( BookStoreContext context )
+        {
+            _context = context;
+        }
+        public int AddNewBook( BookModel model )
+        {
+            var newBook = new Books()
+            {
+                Author = model.Author,
+                CreateOn = DateTime.UtcNow,
+                Description = model.Description,
+                Title = model.Title,
+                TotalPage = model.TotalPage,
+                UpdateOn = DateTime.UtcNow
+            };
+
+            _context.Books.Add( newBook );
+            _context.SaveChanges();
+
+            return newBook.Id;
+        }
         public List<BookModel> GetAllBooks( )
         {
             return DataSource();
