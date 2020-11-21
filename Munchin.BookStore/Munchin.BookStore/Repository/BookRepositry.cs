@@ -24,7 +24,7 @@ namespace Munchin.BookStore.Repository
                 CreateOn = DateTime.UtcNow,
                 Description = model.Description,
                 Title = model.Title,
-                TotalPage = model.TotalPage,
+                TotalPage = model.TotalPage.HasValue ? model.TotalPage.Value : 0,
                 UpdateOn = DateTime.UtcNow
             };
 
