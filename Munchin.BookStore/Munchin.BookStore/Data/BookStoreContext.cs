@@ -11,5 +11,6 @@ namespace Munchin.BookStore.Data
         }
 
         public DbSet<Books> Books { get; set; }
+        public DbSet<Language> Language { get; set; }
     }
 }

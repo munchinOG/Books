@@ -22,6 +22,7 @@ namespace Munchin.BookStore
             services.AddRazorPages().AddRazorRuntimeCompilation();
 
             services.AddScoped<BookRepositry, BookRepositry>();
+            services.AddScoped<LanguageRepository, LanguageRepository>();
 #endif
         }
 
