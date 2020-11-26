@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Munchin.BookStore.Helpers;
+using System.ComponentModel.DataAnnotations;
 
 namespace Munchin.BookStore.Models
 {
@@ -6,14 +7,15 @@ namespace Munchin.BookStore.Models
     {
         public int Id { get; set; }
 
-        [StringLength( 100, MinimumLength = 5 )]
-        [Required( ErrorMessage = "Please enter the title of your book" )]
+        //[StringLength( 100, MinimumLength = 5 )]
+        //[Required( ErrorMessage = "Please enter the title of your book" )]
+        [MyCustomValidation( "azure" )]
         public string Title { get; set; }
 
         [Required( ErrorMessage = "Please enter the author name" )]
         public string Author { get; set; }
 
-        [StringLength( 500, MinimumLength = 5 )]
+        [StringLength( 500 )]
         public string Description { get; set; }
 
         public string Category { get; set; }
