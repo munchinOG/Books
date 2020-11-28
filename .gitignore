@@ -349,3 +349,6 @@ MigrationBackup/
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
 /Munchin.BookStore/Munchin.BookStore/wwwroot/lib
+/Munchin.BookStore/Munchin.BookStore/wwwroot/jquery-validation-unobtrusive
+/Munchin.BookStore/Munchin.BookStore/wwwroot/jquery-validation
+/Munchin.BookStore/Munchin.BookStore/wwwroot/jquery-ajax-unobtrusive

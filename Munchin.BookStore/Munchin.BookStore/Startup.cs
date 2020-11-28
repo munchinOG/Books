@@ -21,9 +21,14 @@ namespace Munchin.BookStore
 #if DEBUG
             services.AddRazorPages().AddRazorRuntimeCompilation();
 
+            // Uncomment this code to disable client side validations.
+            //    .AddViewOptions(option => 
+            //{
+            //    option.HtmlHelperOptions.ClientValidationEnabled = false;
+            //} );
+#endif
             services.AddScoped<BookRepositry, BookRepositry>();
             services.AddScoped<LanguageRepository, LanguageRepository>();
-#endif
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
