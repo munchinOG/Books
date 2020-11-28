@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Munchin.BookStore.Data
 {
@@ -11,9 +12,11 @@ namespace Munchin.BookStore.Data
         public string Category { get; set; }
         public int LanguageId { get; set; }
         public int TotalPages { get; set; }
+        public string CoverImageUrl { get; set; }
         public DateTime? CreateOn { get; set; }
         public DateTime? UpdateOn { get; set; }
 
         public Language Language { get; set; }
+        public ICollection<BookGallery> bookGallery { get; set; }
     }
 }

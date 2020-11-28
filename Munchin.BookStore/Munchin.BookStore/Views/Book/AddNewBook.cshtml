@@ -15,16 +15,7 @@
     </button>
 </div>}
 
-    <div class="d-flex justify-content-center">
-        <div class="spinner-border" role="status" id="myLoader" style="display:none">
-            <span class="sr-only">Loading...</span>
-        </div>
-    </div>
-
-    <form method="post" data-ajax="ture" data-ajax-complete="myComplete"
-          data-ajax-success="mySuccess" data-ajax-failure="myFailure"
-          data-ajax-loading="#myLoader"
-          asp-action="AddNewBook" asp-controller="Book">
+    <form method="post" enctype="multipart/form-data" asp-action="AddNewBook" asp-controller="Book">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
         <div class="form-group">
@@ -58,27 +49,27 @@
             <input asp-for="TotalPages" class="form-control" />
             <span asp-validation-for="TotalPages" class="text-danger"></span>
         </div>
+
+        <div class="form-group">
+            <label asp-for="CoverPhoto"></label>
+            <div class="custom-file">
+                <input asp-for="CoverPhoto" class="custom-file-input" id="customFile" />
+                <label class="custom-file-label" for="customFile">Choose File</label>
+            </div>
+            <span asp-validation-for="CoverPhoto" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="GalleryFiles"></label>
+            <div class="custom-file">
+                <input asp-for="GalleryFiles" class="custom-file-input" id="customFile" />
+                <label class="custom-file-label" for="customFile">Choose File</label>
+            </div>
+            <span asp-validation-for="GalleryFiles" class="text-danger"></span>
+        </div>
+
         <div class="form-group">
             <input type="submit" value="Add Book" class="btn btn-primary" />
         </div>
     </form>
 </div>
-
-@section scripts{
-    <script>
-        function myConplete(data) {
-            alert("I am from complete");
-            console.log(data);
-        }
-
-        function mySuccess(data) {
-            alert("I am from complete");
-            console.log(data);
-        }
-
-        function myFailure(data) {
-            alert("I am from complete");
-            console.log(data);
-        }
-    </script>
-}

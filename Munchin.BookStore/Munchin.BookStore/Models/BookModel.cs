@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Http;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Munchin.BookStore.Models
 {
@@ -26,5 +28,14 @@ namespace Munchin.BookStore.Models
         [Required( ErrorMessage = "Please enter the total pages" )]
         [Display( Name = "Total Pages" )]
         public int? TotalPages { get; set; }
+
+        [Display( Name = "Choose the cover photo of your book" )]
+        [Required]
+        public IFormFile CoverPhoto { get; set; }
+        public string CoverImageUrl { get; set; }
+        [Display( Name = "Choose the cover Images of your book" )]
+        [Required]
+        public IFormFileCollection GalleryFiles { get; set; }
+        public List<GalleryModel> Gallery { get; set; }
     }
 }
