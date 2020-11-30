@@ -13,6 +13,7 @@ namespace Munchin.BookStore.Data
         public int LanguageId { get; set; }
         public int TotalPages { get; set; }
         public string CoverImageUrl { get; set; }
+        public string BookPdfUrl { get; set; }
         public DateTime? CreateOn { get; set; }
         public DateTime? UpdateOn { get; set; }
 

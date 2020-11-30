@@ -27,7 +27,8 @@ namespace Munchin.BookStore.Repository
                 Title = model.Title,
                 TotalPages = model.TotalPages.HasValue ? model.TotalPages.Value : 0,
                 UpdateOn = DateTime.UtcNow,
-                CoverImageUrl = model.CoverImageUrl
+                CoverImageUrl = model.CoverImageUrl,
+                BookPdfUrl = model.BookPdfUrl
             };
 
             newBook.bookGallery = new List<BookGallery>();
@@ -83,7 +84,8 @@ namespace Munchin.BookStore.Repository
                         Id = g.Id,
                         Name = g.Name,
                         URL = g.URL
-                    } ).ToList()
+                    } ).ToList(),
+                    BookPdfUrl = book.BookPdfUrl
                 } ).FirstOrDefaultAsync();
         }
 
