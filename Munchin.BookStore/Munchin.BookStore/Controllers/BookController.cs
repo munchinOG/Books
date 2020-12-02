@@ -25,12 +25,15 @@ namespace Munchin.BookStore.Controllers
             _languageRepository = languageRepository;
             _webHostEnviroment = webHostEnviroment;
         }
+
+        [Route( "all-books" )]
         public async Task<ViewResult> GetAllBooks( )
         {
             var data = await _bookRepository.GetAllBooks();
 
             return View( data );
         }
+        [Route( "/book=details/{id:int:min(1)}", Name = "bookDetailsRoute" )]
 
         public async Task<ViewResult> GetBook( int id )
         {
