@@ -27,8 +27,8 @@ namespace Munchin.BookStore
             //    option.HtmlHelperOptions.ClientValidationEnabled = false;
             //} );
 #endif
-            services.AddScoped<BookRepositry, BookRepositry>();
-            services.AddScoped<LanguageRepository, LanguageRepository>();
+            services.AddScoped<IBookRepositry, BookRepositry>();
+            services.AddScoped<ILanguageRepository, LanguageRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,9 +45,7 @@ namespace Munchin.BookStore
 
             app.UseEndpoints( endpoints =>
              {
-                 endpoints.MapControllers();
-
-                 //endpoints.MapDefaultControllerRoute();
+                 endpoints.MapDefaultControllerRoute();
 
                  //endpoints.MapControllerRoute(
                  //    name: "Default",

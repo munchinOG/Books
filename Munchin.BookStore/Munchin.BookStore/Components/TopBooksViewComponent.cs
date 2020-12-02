@@ -6,9 +6,9 @@ namespace Munchin.BookStore.Components
 {
     public class TopBooksViewComponent : ViewComponent
     {
-        private readonly BookRepositry _bookRepositry;
+        private readonly IBookRepositry _bookRepositry;
 
-        public TopBooksViewComponent( BookRepositry bookRepositry )
+        public TopBooksViewComponent( IBookRepositry bookRepositry )
         {
             _bookRepositry = bookRepositry;
         }

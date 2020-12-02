@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Munchin.BookStore.Models;
 using Munchin.BookStore.Repository;
 using System;
@@ -13,12 +12,12 @@ namespace Munchin.BookStore.Controllers
 {
     public class BookController : Controller
     {
-        private readonly BookRepositry _bookRepository = null;
-        private readonly LanguageRepository _languageRepository = null;
+        private readonly IBookRepositry _bookRepository = null;
+        private readonly ILanguageRepository _languageRepository = null;
         private readonly IWebHostEnvironment _webHostEnviroment;
 
-        public BookController( BookRepositry bookRepositry,
-            LanguageRepository languageRepository,
+        public BookController( IBookRepositry bookRepositry,
+            ILanguageRepository languageRepository,
             IWebHostEnvironment webHostEnviroment )
         {
             _bookRepository = bookRepositry;
@@ -47,11 +46,12 @@ namespace Munchin.BookStore.Controllers
             return _bookRepository.SearchBook( bookName, authorName );
         }
 
-        public async Task<ViewResult> AddNewBook( bool isSuccess = false, int bookId = 0 )
+        //public async Task<ViewResult> AddNewBook( bool isSuccess = false, int bookId = 0 )
+        public ViewResult AddNewBook( bool isSuccess = false, int bookId = 0 )
         {
             var model = new BookModel();
 
-            ViewBag.Language = new SelectList( await _languageRepository.GetLanguages(), "Id", "Name" );
+            //ViewBag.Language = new SelectList( await _languageRepository.GetLanguages(), "Id", "Name" );
 
             ViewBag.IsSuccess = isSuccess;
             ViewBag.BookId = bookId;
@@ -100,7 +100,7 @@ namespace Munchin.BookStore.Controllers
                 }
             }
 
-            ViewBag.Language = new SelectList( await _languageRepository.GetLanguages(), "Id", "Name" );
+            //ViewBag.Language = new SelectList( await _languageRepository.GetLanguages(), "Id", "Name" );
 
             return View();
         }
