@@ -1,4 +1,5 @@
 ﻿@using Munchin.BookStore.Enums
+@inject Munchin.BookStore.Repository.ILanguageRepository _languageRepo
 @model BookModel
 @{ ViewData["Title"] = "Add New Book"; }
 
@@ -20,7 +21,7 @@
 
         <div class="form-group">
             <label asp-for="LanguageId"></label>
-            <select asp-for="LanguageId" class="form-control" asp-items="ViewBag.Language">
+            <select asp-for="LanguageId" class="form-control" asp-items="(await _languageRepo.GetLanguages()).Select(x => new SelectListItem() { Text = x.Name, Value = x.Id.ToString()} )">
                 <option value="">Please choose your Language</option>
             </select>
             <span asp-validation-for="LanguageId" class="text-danger"></span>

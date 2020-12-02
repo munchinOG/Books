@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Munchin.BookStore.Repository
 {
-    public class BookRepositry
+    public class BookRepositry : IBookRepositry
     {
         private readonly BookStoreContext _context = null;
 
@@ -109,6 +109,11 @@ namespace Munchin.BookStore.Repository
         public List<BookModel> SearchBook( string title, string authorName )
         {
             return null;
+        }
+
+        public string GetAppName( )
+        {
+            return "Book Store Application";
         }
     }
 }
