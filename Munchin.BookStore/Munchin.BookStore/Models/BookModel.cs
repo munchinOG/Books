@@ -1,4 +1,5 @@
-﻿using Munchin.BookStore.Helpers;
+﻿using Microsoft.AspNetCore.Http;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Munchin.BookStore.Models
@@ -7,9 +8,9 @@ namespace Munchin.BookStore.Models
     {
         public int Id { get; set; }
 
-        //[StringLength( 100, MinimumLength = 5 )]
-        //[Required( ErrorMessage = "Please enter the title of your book" )]
-        [MyCustomValidation( "azure" )]
+        [StringLength( 100, MinimumLength = 5 )]
+        [Required( ErrorMessage = "Please enter the title of your book" )]
+        //[MyCustomValidation( "azure" )]
         public string Title { get; set; }
 
         [Required( ErrorMessage = "Please enter the author name" )]
@@ -27,5 +28,18 @@ namespace Munchin.BookStore.Models
         [Required( ErrorMessage = "Please enter the total pages" )]
         [Display( Name = "Total Pages" )]
         public int? TotalPages { get; set; }
+
+        [Display( Name = "Choose the cover photo of your book" )]
+        [Required]
+        public IFormFile CoverPhoto { get; set; }
+        public string CoverImageUrl { get; set; }
+        [Display( Name = "Choose the cover Images of your book" )]
+        [Required]
+        public IFormFileCollection GalleryFiles { get; set; }
+        public List<GalleryModel> Gallery { get; set; }
+        [Display( Name = "Upload your book in pdf format" )]
+        [Required]
+        public IFormFile BookPdf { get; set; }
+        public string BookPdfUrl { get; set; }
     }
 }

@@ -9,11 +9,11 @@ namespace Munchin.BookStore.Controllers
             return View();
         }
 
-        public ViewResult AboutUs( )
+        [Route( "about-us/{name:alpha:minlength(5)}" )]
+        public ViewResult AboutUs( string name )
         {
             return View();
         }
-
         public ViewResult ContactUs( )
         {
             return View();

@@ -19,6 +19,29 @@ namespace Munchin.BookStore.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.0");
 
+            modelBuilder.Entity("Munchin.BookStore.Data.BookGallery", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<int>("BookId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("URL")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BookId");
+
+                    b.ToTable("BookGallery");
+                });
+
             modelBuilder.Entity("Munchin.BookStore.Data.Books", b =>
                 {
                     b.Property<int>("Id")
@@ -29,7 +52,13 @@ namespace Munchin.BookStore.Migrations
                     b.Property<string>("Author")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("BookPdfUrl")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Category")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CoverImageUrl")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("CreateOn")
@@ -75,6 +104,17 @@ namespace Munchin.BookStore.Migrations
                     b.ToTable("Language");
                 });
 
+            modelBuilder.Entity("Munchin.BookStore.Data.BookGallery", b =>
+                {
+                    b.HasOne("Munchin.BookStore.Data.Books", "Book")
+                        .WithMany("bookGallery")
+                        .HasForeignKey("BookId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Book");
+                });
+
             modelBuilder.Entity("Munchin.BookStore.Data.Books", b =>
                 {
                     b.HasOne("Munchin.BookStore.Data.Language", "Language")
@@ -84,6 +124,11 @@ namespace Munchin.BookStore.Migrations
                         .IsRequired();
 
                     b.Navigation("Language");
+                });
+
+            modelBuilder.Entity("Munchin.BookStore.Data.Books", b =>
+                {
+                    b.Navigation("bookGallery");
                 });
 
             modelBuilder.Entity("Munchin.BookStore.Data.Language", b =>
