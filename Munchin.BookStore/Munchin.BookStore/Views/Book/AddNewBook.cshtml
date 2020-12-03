@@ -21,7 +21,8 @@
 
         <div class="form-group">
             <label asp-for="LanguageId"></label>
-            <select asp-for="LanguageId" class="form-control" asp-items="(await _languageRepo.GetLanguages()).Select(x => new SelectListItem() { Text = x.Name, Value = x.Id.ToString()} )">
+            <select asp-for="LanguageId" class="form-control"
+                    asp-items="(await _languageRepo.GetLanguages()).Select(x => new SelectListItem() { Text = x.Name, Value = x.Id.ToString()} )">
                 <option value="">Please choose your Language</option>
             </select>
             <span asp-validation-for="LanguageId" class="text-danger"></span>

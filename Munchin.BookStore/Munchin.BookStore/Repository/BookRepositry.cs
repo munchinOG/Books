@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Munchin.BookStore.Data;
 using Munchin.BookStore.Models;
 using System;
@@ -11,10 +12,12 @@ namespace Munchin.BookStore.Repository
     public class BookRepositry : IBookRepositry
     {
         private readonly BookStoreContext _context = null;
+        private readonly IConfiguration _configuration;
 
-        public BookRepositry( BookStoreContext context )
+        public BookRepositry( BookStoreContext context, IConfiguration configuration )
         {
             _context = context;
+            _configuration = configuration;
         }
         public async Task<int> AddNewBook( BookModel model )
         {
@@ -113,7 +116,7 @@ namespace Munchin.BookStore.Repository
 
         public string GetAppName( )
         {
-            return "Book Store Application";
+            return _configuration["AppName"];
         }
     }
 }
